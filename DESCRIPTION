@@ -1,0 +1,26 @@
+Package: WaveR
+Type: Package
+Title: Convenience Functions for Studio Band Wave 
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Alexa", "Resler",
+      email = "alexa@ba-nd.com",
+      role = c("aut")
+    ),
+     person(
+      "Rollie", "Parrish",
+      email = "rollie@ba-nd.com",
+      role = c("aut", "cre")
+    ) 
+  )
+Description: Provides functions to retrieve and process data from various sources.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/rollie-band/WaveR
+BugReports: https://github.com/rollie-band/WaveR/issues
+Config/roxygen2/version: 8.0.0
+Imports: 
+    cli,
+    glue
