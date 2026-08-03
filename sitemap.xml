@@ -1,10 +1,10 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>/404.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/reference/get_secrets.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/404.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/LICENSE-text.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/LICENSE.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/authors.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/index.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/reference/get_secrets.html</loc></url>
+<url><loc>https://rollie-band.github.io/WaveR/reference/index.html</loc></url>
 </urlset>
 
