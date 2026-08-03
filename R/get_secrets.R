@@ -5,7 +5,13 @@
 #' @param path Set the desired subdirectory that contains the desired secret(s). Defaults to '/', which returns all secrets
 #' @param env Infisical Secrets Environment. Defaults to 'dev'.
 #' @param verbose need to finish this
- 
+#'
+# TODO Finish get_secrets() Help page
+# - [ ] function parameters
+# - [ ] Required environment variables
+# - [ ] Examples
+# assignees: rollie-band
+
 #'
 #' @returns Silently adds secrets to the environment
 #' @export
