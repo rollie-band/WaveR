@@ -21,21 +21,9 @@ LazyData: true
 URL: https://github.com/rollie-band/WaveR, https://rollie-band.github.io/WaveR/
 BugReports: https://github.com/rollie-band/WaveR/issues
 Config/roxygen2/version: 8.0.0
-Depends:
-    plyr, 
-    tidyverse, 
-    dbplyr, 
-    odbc, 
-    DBI, 
-    glue, 
-    lubridate, 
-    httr, 
-    jsonlite, 
-    purrr, 
-    forcats, 
-    blastula, 
-    emayili, 
-    prettyunits
 Imports: 
     cli,
-    glue
+    glue,
+    DBI,
+    odbc,
+    RPostgres
