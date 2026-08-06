@@ -5,7 +5,14 @@
 #'
 #' @param app Specify the StudioBand Application in Supabase ("SCARF", "CLOAK")
 #' @param api Specify the database driver (ODBC, ADBC). Default is 'odbc'
-#'
+
+# TODO Finish connect_supabase() Help page
+# - [ ] function parameters
+# - [ ] Required environment variables
+# - [ ] Examples
+# assignees: rollie-band
+
+
 #' @returns conn
 #'
 #' @export

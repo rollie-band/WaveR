@@ -3,12 +3,22 @@
 
 #' Title
 #'
+#'
+
+# TODO Finish connect_gmail() Help page
+# - [ ] function parameters
+# - [ ] Required environment variables
+# - [ ] Examples
+# assignees: rollie-band
+
+
 #' @export
 #'
 
 connect_gmail <- function() {
+
     if (interactive() &&
-        Sys.getenv(glue::glue("SUPABASE_HOST_{app}")) == "") {
+        Sys.getenv(glue::glue("SMTP_HOST")) == "") {
         get_secrets("Service_Account/ETL", "dev")
     }
 

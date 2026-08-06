@@ -6,7 +6,13 @@
 #' @param dbname Database name
 #' @param schema Schema name
 #' @param api ODBC or ADBC
-#'
+
+# TODO Finish connect_snowflake() Help page
+# - [ ] function parameters
+# - [ ] Required environment variables
+# - [ ] Examples
+# assignees: rollie-band
+
 #' @returns connection object
 #' @export
 #'
