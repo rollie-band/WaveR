@@ -6,3 +6,6 @@
 *.Rproj
 .positai
 docs
+
+debug.R
+config.yml

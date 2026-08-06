@@ -1,11 +1,6 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
-  pull_request:
-  release:
-    types: [published]
+    branches: [main]
   workflow_dispatch:
 
 name: pkgdown.yaml
@@ -13,7 +8,7 @@ name: pkgdown.yaml
 permissions: read-all
 
 jobs:
-  pkgdown:
+  build_site:
     runs-on: ubuntu-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
@@ -35,13 +30,20 @@ jobs:
           needs: website
 
       - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        run: pkgdown::build_site()
         shell: Rscript {0}
 
-      - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
-        with:
-          clean: false
-          branch: gh-pages
-          folder: docs
+  deploy_site:
+    name: Deploy to Wave Dev 🚀
+    uses: StudioBandLLC/github-actions/.github/workflows/deploy-shiny.yml@main
+    if: inputs.environment == 'prod' || inputs.environment == 'both'
+    needs: build_site
+    with:
+      target_env: prod
+      source_path: "~/Projects/${{ github.event.repository.name }}/docs/*"
+      remote_path: "/mnt/wave/shiny-server/_data/${{ github.event.repository.name }}"
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      private_ssh_key: ${{ secrets.INFISICAL_SSH_PRIVATE_KEY_PROD }}
+      ssh_host: ${{ secrets.INFISICAL_SSH_HOST_PROD }}
+      ssh_username: ${{ secrets.INFISICAL_SSH_USERNAME_PROD }}

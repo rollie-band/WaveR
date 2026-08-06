@@ -9,3 +9,5 @@
 ^docs$
 ^pkgdown$
 ^debug.R$
+^config.yml$
+^WaveDB.R$

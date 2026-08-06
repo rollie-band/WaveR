@@ -1,30 +1,29 @@
 # Connect to Subabase
 
-
-#' Title
+#' Set up a Supbabase connection object to the specified CapeGlobal App
 #'
-#' @param app Specify the StudioBand Application in Supabase ("SCARF", "CLOAK")
-#' @param api Specify the database driver (ODBC, ADBC). Default is 'odbc'
-
-# TODO Finish connect_supabase() Help page
-# - [ ] function parameters
-# - [ ] Required environment variables
-# - [ ] Examples
-# assignees: rollie-band
-
-
-#' @returns conn
+#' Requires several environment variables for Supabase (HOST, USER, & PASSWORD)
+#'
+#' @param app Specify the CapeGlobal Application in Supabase ("SCARF", "CLOAK")
+#'
+#' @returns Silently returns a connection object
 #'
 #' @export
 #'
-# @examples
+#'@examples
+#' \dontrun{
+#' connect_supabase()
 #'
+#' connect_supabase(app = "CLOAK")
 #'
+#' connect_supabase(app = "SCARF")
+#'
+#' }
 
-connect_supabase <- function(app = NA, api = "odbc") {
+connect_supabase <- function(app = NA) {
 
     if (interactive() && Sys.getenv(glue::glue("SUPABASE_HOST_{app}")) == "" ) {
-        get_secrets("Supabase", "dev")
+        get_secrets("Supabase", config$env)
     }
 
     host     <- Sys.getenv(glue::glue("SUPABASE_HOST_{app}"))
@@ -39,13 +38,13 @@ connect_supabase <- function(app = NA, api = "odbc") {
 
 
     # test that this is a valid api
-    if (!api %in% c("odbc")) {
-        cli::cli_abort(c("Database API can only be ODBC"))
-    }
+    #if (!api %in% c("odbc")) {
+    #j    cli::cli_abort(c("Database API can only be ODBC"))
+    #}
 
-    if (api == "odbc") {
-        conn <- #connections::connection_open(
-            DBI::dbConnect(
+    #if (api == "odbc") {
+        conn <- connections::connection_open(
+            #DBI::dbConnect(
             RPostgres::Postgres(),
             host     = host, #Sys.getenv(glue::glue("SUPABASE_HOST_{app}")),
             port     = 5432,
@@ -54,7 +53,7 @@ connect_supabase <- function(app = NA, api = "odbc") {
             password = password, #Sys.getenv(glue("SUPABASE_PASSWORD_{app}")),
             sslmode  = "require"
         )
-    }
+    #}
 
     # TODO Enable ADBC Connections
     # Currently blocked because the SCARF password includes an `@` character,
@@ -74,5 +73,5 @@ connect_supabase <- function(app = NA, api = "odbc") {
     #         adbc_connection_init(db)
     # }
 
-    conn
+    invisible(conn)
 }

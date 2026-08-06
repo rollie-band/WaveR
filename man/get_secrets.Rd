@@ -2,20 +2,28 @@
 % Please edit documentation in R/get_secrets.R
 \name{get_secrets}
 \alias{get_secrets}
-\title{get_secrets()}
+\title{Loads secrets from Inifisical during interactive sessions}
 \usage{
 get_secrets(path = "/", env = "dev", verbose = TRUE)
 }
 \arguments{
-\item{path}{Set the desired subdirectory that contains the desired secret(s). Defaults to '/', which returns all secrets}
+\item{path}{Set the desired subdirectory that contains the secret(s). Defaults to '/', which returns all secrets}
 
-\item{env}{Infisical Secrets Environment. Defaults to 'dev'.}
+\item{env}{Infisical secrets environment. Defaults to 'dev'.}
 
-\item{verbose}{need to finish this}
+\item{verbose}{Toggles the display of the Infisical export command. Default is FALSE}
 }
 \value{
 Silently adds secrets to the environment
 }
 \description{
+Requires several environment variables for Infisical (CLIENT_ID, CLIENT_SECRET, and PROJECT_ID)
+}
+\examples{
+\dontrun{
 get_secrets()
+
+get_secrets(path = "Service_Account/ETL")
+
+}
 }

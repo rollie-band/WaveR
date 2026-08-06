@@ -2,18 +2,26 @@
 % Please edit documentation in R/connect_supabase.R
 \name{connect_supabase}
 \alias{connect_supabase}
-\title{Title}
+\title{Set up a Supbabase connection object to the specified CapeGlobal App}
 \usage{
-connect_supabase(app = NA, api = "odbc")
+connect_supabase(app = NA)
 }
 \arguments{
-\item{app}{Specify the StudioBand Application in Supabase ("SCARF", "CLOAK")}
-
-\item{api}{Specify the database driver (ODBC, ADBC). Default is 'odbc'}
+\item{app}{Specify the CapeGlobal Application in Supabase ("SCARF", "CLOAK")}
 }
 \value{
-conn
+Silently returns a connection object
 }
 \description{
-Title
+Requires several environment variables for Supabase (HOST, USER, & PASSWORD)
+}
+\examples{
+\dontrun{
+connect_supabase()
+
+connect_supabase(dbname = "CLOAK")
+
+connect_supabase(dbname = "SCARF")
+
+}
 }

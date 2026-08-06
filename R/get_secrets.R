@@ -1,21 +1,23 @@
 # Get secrets from Infisical
 
-#' get_secrets()
+#' Loads secrets from Inifisical during interactive sessions
 #'
-#' @param path Set the desired subdirectory that contains the desired secret(s). Defaults to '/', which returns all secrets
-#' @param env Infisical Secrets Environment. Defaults to 'dev'.
-#' @param verbose need to finish this
+#' Requires several environment variables for Infisical (CLIENT_ID, CLIENT_SECRET, and PROJECT_ID)
 #'
-# TODO Finish get_secrets() Help page
-# - [ ] function parameters
-# - [ ] Required environment variables
-# - [ ] Examples
-# assignees: rollie-band
-
+#' @param path Set the desired subdirectory that contains the secret(s). Defaults to '/', which returns all secrets
+#' @param env Infisical secrets environment. Defaults to 'dev'.
+#' @param verbose Toggles the display of the Infisical export command. Default is FALSE
 #'
 #' @returns Silently adds secrets to the environment
 #' @export
 #'
+#'@examples
+#' \dontrun{
+#' get_secrets()
+#'
+#' get_secrets(path = "Service_Account/ETL")
+#'
+#' }
 
 get_secrets <- function(
         path = "/",

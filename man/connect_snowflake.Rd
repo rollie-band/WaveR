@@ -2,20 +2,28 @@
 % Please edit documentation in R/connect_snowflake.R
 \name{connect_snowflake}
 \alias{connect_snowflake}
-\title{Title}
+\title{Set up a Snowflake connection object to the specified database & schema}
 \usage{
-connect_snowflake(dbname = "SCARF", schema = "RAW", api = "odbc")
+connect_snowflake(dbname = "SALESFORCE", schema = "RAW", warehouse = "WH_XS")
 }
 \arguments{
-\item{dbname}{Database name}
+\item{dbname}{Database name. Will have DB_PREFIX and DB_SUFFIX added from global environment}
 
 \item{schema}{Schema name}
 
-\item{api}{ODBC or ADBC}
+\item{warehouse}{Warehouse name. Default is "WH_XS"}
 }
 \value{
-connection object
+Silently returns a connection object
 }
 \description{
-Title
+Requires several environment variables
+}
+\examples{
+\dontrun{
+connect_snowflake()
+
+connect_snowflake(dbname = "RAMP", schema = "CLEAN")
+
+}
 }

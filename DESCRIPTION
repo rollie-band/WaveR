@@ -25,6 +25,9 @@ Imports:
     cli,
     glue,
     rlang,
+    connections,
     DBI,
     odbc,
-    RPostgres
+    RPostgres, 
+    config,
+    rprojroot

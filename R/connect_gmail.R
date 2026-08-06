@@ -1,19 +1,16 @@
 # Connect to Gmail
 
-
-#' Title
+#' Load the SMTP connection variables for sending email via Gmail.
 #'
+#' This function is called from WaveR::use_wave()
 #'
-
-# TODO Finish connect_gmail() Help page
-# - [ ] function parameters
-# - [ ] Required environment variables
-# - [ ] Examples
-# assignees: rollie-band
-
-
 #' @export
 #'
+#'@examples
+#' \dontrun{
+#' connect_gmail()
+#'
+#' }#'
 
 connect_gmail <- function() {
 
@@ -22,7 +19,7 @@ connect_gmail <- function() {
         get_secrets("Service_Account/ETL", "dev")
     }
 
-    parent_env <- rlang::caller_env()
+    parent_env <- rlang::global_env()
 
     rlang::env_bind(
         .env = parent_env,

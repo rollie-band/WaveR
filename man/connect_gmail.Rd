@@ -2,10 +2,16 @@
 % Please edit documentation in R/connect_gmail.R
 \name{connect_gmail}
 \alias{connect_gmail}
-\title{Title}
+\title{Load the SMTP connection variables for sending email via Gmail.}
 \usage{
 connect_gmail()
 }
 \description{
-Title
+This function is called from WaveR::use_wave()
+}
+\examples{
+\dontrun{
+connect_gmail()
+
+}#'
 }

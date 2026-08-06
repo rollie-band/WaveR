@@ -1,27 +1,44 @@
 # Connect to Snowflake
 
-
-#' Title
+#' Set up a Snowflake connection object to the specified database & schema
 #'
-#' @param dbname Database name
+#' Requires several environment variables
+#'
+#' @param dbname Database name. Will have DB_PREFIX and DB_SUFFIX added from global environment
 #' @param schema Schema name
-#' @param api ODBC or ADBC
-
-# TODO Finish connect_snowflake() Help page
-# - [ ] function parameters
-# - [ ] Required environment variables
-# - [ ] Examples
-# assignees: rollie-band
-
-#' @returns connection object
+#' @param warehouse Warehouse name. Default is "WH_XS"
+#'
+#' @returns Silently returns a connection object
 #' @export
 #'
+#'@examples
+#' \dontrun{
+#' connect_snowflake()
+#'
+#' connect_snowflake(dbname = "RAMP", schema = "CLEAN")
+#'
+#' }
 
-connect_snowflake <- function(dbname = "SCARF",
+connect_snowflake <- function(dbname = "SALESFORCE",
                               schema = "RAW",
-                              api = "odbc") {
-    config <- list()
-    config$snowflake_role <- "DEVELOPER"
+                              warehouse = "WH_XS"
+                              #api = "odbc"
+                              ) {
+    # test that config.yml is active
+    #if (!api %in% c("odbc")) {
+    #    cli::cli_abort(c("Database API can only be odbc"))
+    #}
+
+    if (!exists("config")) {
+        cli::cli_abort(c(
+            "x" = "{.file config.yml} must be loaded",
+            "i" = "Recommend calling {.fun WaveR::use_wave} before using this function"))
+    }
+
+    if (interactive() && Sys.getenv(glue::glue("SNOWFLAKE_HOST")) == "" ) {
+        get_secrets("Snowflake_SVC", config$env)
+        get_secrets("Snowflake", config$env)
+    }
 
     # Set objects
     database_name <- glue::glue("{Sys.getenv('DB_PREFIX')}{dbname}{Sys.getenv('DB_SUFFIX')}")
@@ -35,14 +52,15 @@ connect_snowflake <- function(dbname = "SCARF",
 
 
     # test that this is a valid api
-    if (!api %in% c("odbc")) {
-        cli::cli_abort(c("Database API can only be odbc"))
-    }
+    #if (!api %in% c("odbc")) {
+    #    cli::cli_abort(c("Database API can only be odbc"))
+    #}
 
-    if (api == "odbc") {
-        conn <- DBI::dbConnect(
+    #if (api == "odbc") {
+        conn <-
+            DBI::dbConnect(
             #connections::connection_open(
-            odbc::odbc(),
+            odbc::snowflake(),
             dsn = "SnowflakeDSII",
             account = snowflake_account,
             uid = Sys.getenv("SNOWFLAKE_SVC_USERNAME"),
@@ -50,11 +68,11 @@ connect_snowflake <- function(dbname = "SCARF",
             authenticator = "SNOWFLAKE_JWT",
             PRIV_KEY_FILE = private_key_path,
             PRIV_KEY_FILE_PWD = private_key_pwd,
-            warehouse = "WH_XS",
+            warehouse = warehouse,
             Database = database_name,
             Schema = schema
         )
-    }
+    #}
 
     # if (api == "adbc") {
     #     #snowflake_uri = glue::glue("{snowflake_user}:{private_key_pwd}@{snowflake_host}/{database_name}/RAW?role={snowflake_role}")
@@ -65,13 +83,10 @@ connect_snowflake <- function(dbname = "SCARF",
     #         drv,
     #
     #         adbc.snowflake.sql.auth_type = "auth_jwt",
-    #         #adbc.snowflake.sql.client_option.jwt_private_key = private_key_path,
-    #         #adbc.snowflake.sql.client_option.jwt_private_key_pkcs8_password = private_key_pwd,
-    #         adbc.snowflake.sql.client_option.jwt_private_key = '/home/rollie/.ssh/snowflake_rsa_key.p8',
-    #         adbc.snowflake.sql.client_option.jwt_private_key_pkcs8_password = "NoCapes",
+    #         adbc.snowflake.sql.client_option.jwt_private_key = private_key_path,
+    #         adbc.snowflake.sql.client_option.jwt_private_key_pkcs8_password = private_key_pwd,
     #
     #         adbc.snowflake.sql.account = snowflake_account,
-    #         #adbc.snowflake.sql.warehouse = ,
     #         adbc.snowflake.sql.role = config$snowflake_role,
     #         adbc.snowflake.sql.db = database_name,
     #         adbc.snowflake.sql.schema = "RAW"
@@ -81,6 +96,6 @@ connect_snowflake <- function(dbname = "SCARF",
     #         adbcdrivermanager::adbc_connection_init(db)
     # }
 
-    conn
+    invisible(conn)
 
 }
