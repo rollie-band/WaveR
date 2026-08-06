@@ -24,6 +24,7 @@ Config/roxygen2/version: 8.0.0
 Imports: 
     cli,
     glue,
+    rlang,
     DBI,
     odbc,
     RPostgres
