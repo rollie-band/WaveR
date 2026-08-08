@@ -26,4 +26,10 @@ library(WaveR)
 # settings 
 
 use_wave()
+
+# Connect to the RAMP database in Snowflake
+conSnow <- connect_snowflake("RAMP", "CLEAN")
+
+# Connect to the SCARF database in Supabase
+conScarf <- connect_supabase("SCARF")
 ```

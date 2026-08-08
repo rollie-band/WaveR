@@ -69,7 +69,13 @@
 <span><span class="co"># Runs at the start of a project to load the common configurations and </span></span>
 <span><span class="co"># settings </span></span>
 <span></span>
-<span><span class="fu"><a href="reference/use_wave.html">use_wave</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/use_wave.html">use_wave</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Connect to the RAMP database in Snowflake</span></span>
+<span><span class="va">conSnow</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect_snowflake.html">connect_snowflake</a></span><span class="op">(</span><span class="st">"RAMP"</span>, <span class="st">"CLEAN"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Connect to the SCARF database in Supabase</span></span>
+<span><span class="va">conScarf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect_supabase.html">connect_supabase</a></span><span class="op">(</span><span class="st">"SCARF"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
