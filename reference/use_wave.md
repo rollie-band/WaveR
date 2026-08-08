@@ -1,4 +1,4 @@
-# Use the default Wave
+# Use the default Wave settings
 
 Loads config.yml settings and default options for a Wave project.
 
@@ -28,6 +28,7 @@ addresses in config\$emails_errors, and sets the working directory.
 ``` r
 if (FALSE) { # \dontrun{
 use_wave()
+
 use_wave(quiet = TRUE)
 } # }
 ```

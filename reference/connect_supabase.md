@@ -1,23 +1,33 @@
-# Title
+# Set up a Supbabase connection object to the specified CapeGlobal App
 
-Title
+Requires several environment variables for Supabase (HOST, USER, &
+PASSWORD)
 
 ## Usage
 
 ``` r
-connect_supabase(app = NA, api = "odbc")
+connect_supabase(app = NA)
 ```
 
 ## Arguments
 
 - app:
 
-  Specify the StudioBand Application in Supabase ("SCARF", "CLOAK")
-
-- api:
-
-  Specify the database driver (ODBC, ADBC). Default is 'odbc'
+  Specify the CapeGlobal Application in Supabase ("SCARF", "CLOAK")
 
 ## Value
 
-conn
+Silently returns a connection object
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+connect_supabase()
+
+connect_supabase(dbname = "CLOAK")
+
+connect_supabase(dbname = "SCARF")
+
+} # }
+```
