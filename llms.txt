@@ -1,6 +1,7 @@
 # WaveR
 
-The goal of WaveR is to …
+The goal of WaveR is to facilitate code-reuse between Wave projects
+using standardized functions.
 
 ## Installation
 
@@ -10,7 +11,7 @@ You can install the development version of WaveR from
 ``` r
 
 # install.packages("pak")
-pak::pak("rollie-band/WaveR")
+pak::pak("StudioBandLLC/WaveR")
 ```
 
 ## Example
@@ -20,7 +21,11 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 
 library(WaveR)
-## basic example code
+
+# Runs at the start of a project to load the common configurations and 
+# settings 
+
+use_wave()
 ```
 
 # Package index
