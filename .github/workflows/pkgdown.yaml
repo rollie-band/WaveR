@@ -35,8 +35,7 @@ jobs:
 
   deploy_site:
     name: Deploy to Wave Dev 🚀
-    uses: StudioBandLLC/github-actions/.github/workflows/deploy-shiny.yml@main
-    if: inputs.environment == 'prod' || inputs.environment == 'both'
+    uses: StudioBandLLC/github-actions/.github/workflows/deploy-shiny.yml@v1
     needs: build_site
     with:
       target_env: prod
